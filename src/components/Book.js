@@ -1,6 +1,7 @@
 import './Book.css';
 import { useState } from 'react';
 import categories from '../categories';
+import logo from '../logo.png'; // ייבוא הלוגו של החנות ספרים
 
 function Book(props) {
   const {name, price, discount, author, category, b_count, rating, onRemove, onRate} = props;
@@ -48,7 +49,10 @@ function Book(props) {
 
   return (
     <div className={containerClass}>
+      <div className="logo-title-book">
+      <img src={logo} alt="לוגו חנות ספרים" className="logo-img-book" />
       <h2>{name}</h2>
+      </div>
       
       <div className="book-info">
         <p><strong>סופר:</strong> {author}</p>

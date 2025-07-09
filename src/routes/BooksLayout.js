@@ -1,4 +1,5 @@
 import { Link, Outlet } from 'react-router-dom';
+import logo from '../logo.png';
 
 const BooksLayout = () => {
   return (
@@ -6,7 +7,10 @@ const BooksLayout = () => {
       {/* הכותרת והניווט בפס אחד עליון מינימליסטי */}
       <header className="clean-header">
         <div className="header-container">
+          <div class="logo-title">
           <h1 className="brand-title">חנות ספרים</h1>
+          {/* <img src={logo} alt="לוגו חנות ספרים" className="logo-img" /> */}
+          </div>
           <nav className="clean-nav">
             <Link to="/books" className="nav-item">
               כל הספרים
