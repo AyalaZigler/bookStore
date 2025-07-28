@@ -1,18 +1,31 @@
+import { useState, useEffect } from 'react';
 import Book from '../components/Book';
 
 const BooksContent = ({ books, removeBookByName, handleRateBook }) => {
-  // ממליצים – שלושת הספרים עם הדירוג הכי גבוה
+  const [showScrollButton, setShowScrollButton] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollButton(window.scrollY > 300);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   const topBooks = [...books]
     .filter(book => book.ratingCount > 0)
     .sort((a, b) => b.rating - a.rating)
     .slice(0, 3);
 
-  // שאר הספרים - כל הספרים שלא נמצאים ב-topBooks
   const otherBooks = books.filter(book => !topBooks.includes(book));
 
   return (
     <div>
-      {/* המומלצים שלנו - רק אם יש ספרים עם דירוג */}
       {topBooks.length > 0 && (
         <>
           <h2 style={{ textAlign: 'center', marginRight: '30px' }}>המומלצים שלנו</h2>
@@ -29,7 +42,6 @@ const BooksContent = ({ books, removeBookByName, handleRateBook }) => {
         </>
       )}
 
-      {/* כל שאר הספרים */}
       <h2 style={{ textAlign: 'center', marginRight: '30px' }}>
         {topBooks.length > 0 ? 'כל שאר הספרים' : 'כל הספרים'}
       </h2>
@@ -43,6 +55,13 @@ const BooksContent = ({ books, removeBookByName, handleRateBook }) => {
           />
         ))}
       </div>
+
+      {/* כפתור גלילה רק אם עברו סף גלילה */}
+      {showScrollButton && (
+        <button className="scroll-to-top animate-drop" onClick={scrollToTop} title="חזור למעלה">
+          ↑
+        </button>
+      )}
     </div>
   );
 };

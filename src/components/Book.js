@@ -49,6 +49,10 @@ function Book(props) {
 
   return (
     <div className={containerClass}>
+      {hasDiscount && (
+        <div className="sale-tag">מבצע</div>
+      )}
+      
       <div className="logo-title-book">
       <img src={logo} alt="לוגו חנות ספרים" className="logo-img-book" />
       <h2>{name}</h2>

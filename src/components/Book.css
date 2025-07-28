@@ -24,11 +24,27 @@
   transition: all 0.3s ease;
   max-height: 620px;
   overflow: hidden;
+  position: relative;
 }
 
 .book-container:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(52, 152, 219, 0.15);
+}
+
+/* תג מבצע */
+.sale-tag {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: #3498db;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(52, 152, 219, 0.3);
 }
 
 .book-container h2 {
@@ -346,7 +362,7 @@
   }
   
   .book-container {
-    padding: 16px;
+    padding: 20px;
     max-height: 580px;
   }
   

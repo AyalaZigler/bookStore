@@ -1,26 +1,42 @@
-import { Link, Outlet } from 'react-router-dom';
+import { NavLink, Outlet, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import logo from '../logo.png';
 
 const BooksLayout = () => {
+  const location = useLocation();
+  
   return (
     <div>
       {/* הכותרת והניווט בפס אחד עליון מינימליסטי */}
       <header className="clean-header">
         <div className="header-container">
-          <div class="logo-title">
-          <h1 className="brand-title">חנות ספרים</h1>
-          {/* <img src={logo} alt="לוגו חנות ספרים" className="logo-img" /> */}
+          <div className="logo-title">
+            <Link to="/" className="logo-link">
+              <h1 className="brand-title">חנות ספרים</h1>
+              {/* <img src={logo} alt="לוגו חנות ספרים" className="logo-img" /> */}
+            </Link>
           </div>
           <nav className="clean-nav">
-            <Link to="/books" className="nav-item">
+            <NavLink 
+              to="/books" 
+              className={`nav-item ${location.pathname === '/books' ? 'active' : ''}`}
+              end
+            >
               כל הספרים
-            </Link>
-            <Link to="/books/add" className="nav-item">
+            </NavLink>
+            <NavLink 
+              to="/books/add" 
+              className={`nav-item ${location.pathname === '/books/add' ? 'active' : ''}`}
+            >
               הוסף ספר חדש
-            </Link>
-            <Link to="/" className="nav-item">
+            </NavLink>
+            <NavLink 
+              to="/" 
+              className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}
+              end
+            >
               חזרה לדף הבית
-            </Link>
+            </NavLink>
           </nav>
         </div>
       </header>
