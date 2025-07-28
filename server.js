@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const booksData = require('./src/booksData');
 const app = express();
-const port = 3001; // פורט שרת ה-API
+const port = process.env.POR; // פורט שרת ה-API
 module.exports = app;
 app.use(cors());
 app.use(express.json());
