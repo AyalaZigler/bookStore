@@ -40,7 +40,7 @@ function App() {
   useEffect(() => {
     (async function() {
       try {
-        const res = await fetch(`https://bookstore-1-g5ev.onrender.com/`);
+        const res = await fetch(`${process.env.REACT_APP_API_URL}`);
         const data = await res.json();
         console.log(data);
         setBooks(data);
