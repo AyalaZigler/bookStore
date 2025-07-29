@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const booksData = require('./src/booksData');
 const app = express();
-const port = 3001;
+const port = process.env.PORT || 3001;
 
 // מסד זמני בזיכרון
 let books = booksData;
