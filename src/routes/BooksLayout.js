@@ -35,7 +35,7 @@ const BooksLayout = () => {
               className={`nav-item ${location.pathname === '/' ? 'active' : ''}`}
               end
             >
-              חזרה לדף הבית
+              דף הבית
             </NavLink>
           </nav>
         </div>
